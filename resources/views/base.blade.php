@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>@yield('title')</title>
-    <link rel="stylesheet" type="text/css" href={{ asset('css/style.css') }}>
+    <link rel="stylesheet" type="text/css" href={{ asset('css/app.css') }}>
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <script
         src="https://code.jquery.com/jquery-3.6.0.js"
@@ -91,12 +91,13 @@
                     class="fab fa-twitter"></i></a></div>
     </div>
 </footer>
-<script type="text/javascript" src="{!! asset('js/CatalogFilter.js') !!}"></script>
-<script type="text/javascript" src="{!! asset('js/OptionSelect.js') !!}"></script>
-<script type="text/javascript" src="{!! asset('js/OverlayMenu.js') !!}"></script>
-<script type="text/javascript" src="{!! asset('js/AnimationButtons.js') !!}"></script>
-<script type="text/javascript" src="{!! asset('js/save_scroll_coords.js') !!}"></script>
-<script type="text/javascript" src="{!! asset('js/CalcTotalPrice.js') !!}"></script>
+<script type="text/javascript" src="{!! asset('js/app.js') !!}"></script>
+{{--<script type="text/javascript" src="{!! asset('js/CatalogFilter.js') !!}"></script>--}}
+{{--<script type="text/javascript" src="{!! asset('js/OptionSelect.js') !!}"></script>--}}
+{{--<script type="text/javascript" src="{!! asset('js/OverlayMenu.js') !!}"></script>--}}
+{{--<script type="text/javascript" src="{!! asset('js/AnimationButtons.js') !!}"></script>--}}
+{{--<script type="text/javascript" src="{!! asset('js/save_scroll_coords.js') !!}"></script>--}}
+{{--<script type="text/javascript" src="{!! asset('js/CalcTotalPrice.js') !!}"></script>--}}
 </body>
 
 </html>
