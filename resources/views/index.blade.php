@@ -7,7 +7,7 @@
     <article class="promo">
         <div class="promo-wrap wrap">
             <h3>hole</h3>
-            <div class="promo-model"> <img src="./image/main-model.png" class="main-model" alt="model"> </div>
+            <div class="promo-model"> <img src="{{ asset('image/main-model.png') }}" class="main-model" alt="model"> </div>
             <section class="promo-name">
                 <div class="promo-name-slogan">
                     <h2 class="main-name">THE BRAND</h2>
@@ -73,7 +73,7 @@
                 @endforeach
             </div>
             <footer class="products-footer">
-                <a href={{ route('shop::catalog::index', ['page' => 1]) }} class="products-footer-button">
+                <a href={{ route('shop::catalog::index') }} class="products-footer-button">
                     <p>Browse All Product</p>
                 </a>
             </footer>

@@ -35,7 +35,7 @@ Route::get('/cart', [CartController::class, 'index'])
     ->name('shop::cart');
 Route::get('/cart/clear', [CartController::class, 'clear'])
     ->name('shop::cart::clear');
-Route::get('/cart/add/{options}/{quantity}', [CartController::class, 'addItem'])
+Route::post('/cart/add/', [CartController::class, 'addItem'])
     ->name('shop::cart::add');
 Route::get('/cart/delete/{id}', [CartController::class, 'deleteItem'])
     ->name('shop::cart::delete');

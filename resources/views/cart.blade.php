@@ -8,26 +8,26 @@
     </nav>
     <main class="cart wrap">
         <article class="cart-products">
-            @forelse($items as $key => $item)
-                <article class="cart-product"><img src="{{ \App\Models\Items::find($item[0]['item_id'])->image }}"
+            @forelse($orders as $order)
+                <article class="cart-product"><img src="{{ $order['item']->image }}"
                                                    class="cart-product-image" alt="arr3"
                                                    width="262" height="306">
-                    <a href=" {{ route('shop::cart::delete', ['id' => $item[0]['option_id']]) }}"><i
+                    <a href=" {{ route('shop::cart::delete', ['id' => $order['optionId']]) }}"><i
                             class="fas fa-times cross-cart"></i></a>
                     <div class="info-cart">
-                        <p class="name-item">{{ \App\Models\Items::find($item[0]['item_id'])->title }}
+                        <p class="name-item">{{ $order['item']->title }}
                             <br> T-SHIRT</p>
                         <div class="spec-item">
-                            <p class="price-item">Price: <span id="price_{{ $item[0]['price'] }}"
-                                                               class="price-item-value">{{ $item[0]['price'] }}</span>$
+                            <p class="price-item">Price: <span id="price_{{ $order['price'] }}"
+                                                               class="price-item-value">{{ $order['price'] * $order['quantity'] }}</span>$
                             </p>
                             <p class="color-item">Color: <span
-                                    id="color"> {{ \App\Models\Color::find($item[0]['color_id'])->name }}</span></p>
-                            <p class="size-item">Size: {{ \App\Models\Size::find($item[0]['size_id'])->name }}</p>
+                                    id="color"> {{ $order['color']->name }}</span></p>
+                            <p class="size-item">Size: {{ $order['size']->name }}</p>
                             <p class="size-quantity">Quantity:
                                 <input type="number" min="1" max="50" class="input-size-quantity"
-                                       id="count_{{ $item[0]['price'] }}"
-                                       value="{{ $item[0]['quantity'] }}"></p>
+                                       id="count_{{ $order['price'] }}"
+                                       value="{{ $order['quantity'] }}"></p>
                         </div>
                     </div>
                 </article>
@@ -62,31 +62,4 @@
             </fieldset>
         </form>
     </main>
-    <script>
-        $(document).ready(function () {
-            calcTotal();
-            $(".input-size-quantity").click(calcTotal);
-            $(".cart-product").click(calcSubTotal);
-
-            function calcSubTotal() {
-                let price = $(this).find(".price-item-value").html();
-                let count = $(this).find(".input-size-quantity").val();
-                $("#sub-total").html(price * count);
-            }
-
-            function calcTotal() {
-                let total = 0;
-                $(".price-item-value").each(function () {
-                    let price = Number($(this).html());
-                    let count = Number($(`#count_${price}`).val());
-                    total += price * count;
-                });
-                $("#total").html(total);
-            }
-
-            if ($(".cart-products p").html() == 'Корзина пуста'){
-                $("#checkout_btn").attr('type', 'hidden');
-            }
-        });
-    </script>
 @endsection

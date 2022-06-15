@@ -2,32 +2,52 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Color;
+use App\Models\Item;
 use App\Models\Option;
+use App\Models\Size;
 use Illuminate\Http\Request;
 
 class CartController extends Controller
 {
     public function index(Request $request)
     {
-        $items = $request->session()->get('orders') ?: [];
-        return view('cart', ['items' => $items]);
+        $items = [];
+        if ($orders = $request->session()->get('orders')) {
+            foreach ($orders as $order) {
+                $optionId = $order[0]['option_id'];
+                $option = Option::find($optionId);
+                $items[] = [
+                    'item' => Item::find($order[0]['item_id']),
+                    'optionId' => $optionId,
+                    'color' => Color::find($option->color_id),
+                    'size' => Size::find($option->size_id),
+                    'price' => $option->impact_price,
+                    'quantity' => $order[0]['quantity']
+                ];
+            }
+        };
+
+        return view('cart', ['orders' => $items]);
     }
 
-    public function addItem(int $id, int $quantity, Request $request)
+    public function addItem(Request $request)
     {
-        $option = Option::find($id);
-        if (!$request->session()->has("orders.$id")) {
-            $request->session()->push("orders.$id", [
-                'user_id' => 1,
-                'option_id' => $option->id,
+        $optionId = $request->optionId;
+        $option = Option::find($optionId);
+
+        if (!$request->session()->has("orders.$optionId")) {
+            $request->session()->push("orders.$optionId", [
+                'option_id' => $optionId,
                 'item_id' => $option->item_id,
-                'color_id' => $option->color_id,
-                'size_id' => $option->size_id,
-                'price' => $option->impact_price,
-                'quantity' => $quantity,
+                'quantity' => $request->quantity,
             ]);
+
         } else {
-            $request->session()->put("orders.$id.0.quantity", session()->get("orders.$id.0.quantity") + 1);
+            $request->session()->put(
+                "orders.$optionId.0.quantity",
+                $request->session()->get("orders.$optionId.0.quantity") + 1
+            );
         }
         return redirect()->back();
     }
@@ -35,25 +55,14 @@ class CartController extends Controller
     public function deleteItem(int $id, Request $request)
     {
         $request->session()->forget("orders.$id");
+
         return redirect()->back();
     }
 
     public function clear(Request $request)
     {
         $request->session()->forget('orders');
+
         return redirect()->back();
     }
 }
-
-//        $order = Cart::query()->where('option_id', $id)->first() ? : new Cart;
-//        $option = Option::find($id);
-//
-//        $order->user_id = 1;
-//        $order->option_id = $id;
-//        $order->item_id = $option->item_id;
-//        $order->color_id = $option->color_id;
-//        $order->size_id = $option->size_id;
-//        $order->price = $option->impact_price;
-//        $order->quantity += $quantity;
-//        $order->save();
-//        dd($request->session()->all());

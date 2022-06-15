@@ -22,7 +22,7 @@ $(document).ready(function () {
         $.ajax({
             url: '/option-price',         /* Куда пойдет запрос */
             method: 'get',             /* Метод передачи (post или get) */
-            dataType: 'html',          /* Тип данных в ответе (xml, json, script, html). */
+            dataType: 'json',          /* Тип данных в ответе (xml, json, script, html). */
             data: {
                 itemId: itemId,
                 color: color,
@@ -30,7 +30,9 @@ $(document).ready(function () {
                 quantity: quantity
             },     /* Параметры передаваемые в запросе. */
             success: function (data) {   /* функция которая будет выполнена после успешного запроса.  */
-                $(".price-product").html(data);
+                console.log(data.option.id);
+                $(".price-product").html(data.price);
+                $("#optionId").val(data.option.id);
             },
             error: function () {
                 console.log(response.responseJSON.errors);

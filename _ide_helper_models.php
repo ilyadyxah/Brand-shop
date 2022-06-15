@@ -39,7 +39,7 @@ namespace App\Models{
  * @property string $name
  * @property \Illuminate\Support\Carbon|null $created_at
  * @property \Illuminate\Support\Carbon|null $updated_at
- * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\Items[] $items
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\Item[] $items
  * @property-read int|null $items_count
  * @method static \Illuminate\Database\Eloquent\Builder|Category newModelQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|Category newQuery()
@@ -69,7 +69,7 @@ namespace App\Models{
 
 namespace App\Models{
 /**
- * App\Models\Items
+ * App\Models\Item
  *
  * @property int $id
  * @property string $title
@@ -82,19 +82,19 @@ namespace App\Models{
  * @property string|null $deleted_at
  * @property int|null $category_id
  * @property-read \App\Models\Category|null $category
- * @method static \Illuminate\Database\Eloquent\Builder|Items newModelQuery()
- * @method static \Illuminate\Database\Eloquent\Builder|Items newQuery()
- * @method static \Illuminate\Database\Eloquent\Builder|Items query()
- * @method static \Illuminate\Database\Eloquent\Builder|Items whereCategoryId($value)
- * @method static \Illuminate\Database\Eloquent\Builder|Items whereContent($value)
- * @method static \Illuminate\Database\Eloquent\Builder|Items whereCreatedAt($value)
- * @method static \Illuminate\Database\Eloquent\Builder|Items whereDeletedAt($value)
- * @method static \Illuminate\Database\Eloquent\Builder|Items whereGender($value)
- * @method static \Illuminate\Database\Eloquent\Builder|Items whereId($value)
- * @method static \Illuminate\Database\Eloquent\Builder|Items whereImage($value)
- * @method static \Illuminate\Database\Eloquent\Builder|Items wherePrice($value)
- * @method static \Illuminate\Database\Eloquent\Builder|Items whereTitle($value)
- * @method static \Illuminate\Database\Eloquent\Builder|Items whereUpdatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Item newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|Item newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|Item query()
+ * @method static \Illuminate\Database\Eloquent\Builder|Item whereCategoryId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Item whereContent($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Item whereCreatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Item whereDeletedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Item whereGender($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Item whereId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Item whereImage($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Item wherePrice($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Item whereTitle($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Item whereUpdatedAt($value)
  */
 	class Items extends \Eloquent {}
 }

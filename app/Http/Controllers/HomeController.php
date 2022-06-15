@@ -2,16 +2,15 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Items;
+use App\Models\Item;
 
 class HomeController extends Controller
 {
     public function index()
     {
-        $items = Items::orderBy('updated_at', 'desc')->get();
-        $items = Items::getOnPage(1, 6, $items);
-
-        return view('index', ['items' => $items]);
+        return view('index', [
+            'items' => Item::getItems()->paginate(3)
+        ]);
 
     }
 }

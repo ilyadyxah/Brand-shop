@@ -2,11 +2,11 @@
 
 namespace Database\Seeders;
 
-use App\Models\Items;
+use App\Models\Item;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 
-class OptionsSeeder extends Seeder
+class ItemsColorsSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -23,7 +23,7 @@ class OptionsSeeder extends Seeder
                             'item_id' => $i,
                             'size_id' => $j,
                             'color_id' => $k,
-                            'impact_price' => Items::query()->where('id', 1)->value('price') * (94 + $j*3)/100 * (94 + $k*3)/100,
+                            'impact_price' => Item::query()->where('id', 1)->value('price') * (94 + $j*3)/100 * (94 + $k*3)/100,
                         ]);
                 }
             }

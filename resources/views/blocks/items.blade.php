@@ -21,26 +21,6 @@
         </section>
     @endforeach
 </article>
-<footer class="nav-page">
-    @if($current_page != 1)
-        <a href="#" class="link-page" id="{{ $current_page - 1 }}">
-            <img src={{ asset('image/left-way.svg') }} alt="left">
-        </a>
-    @else
-        <img src={{ asset('image/left-way.svg') }} alt="left">
-    @endif
-    @for ($i = 1; $i <= $pages; $i++)
-        @if ($current_page == $i)
-            <a href="#" class="link-page" style="font-weight: bold" id="{{ $i }}">{{ $i }}</a>
-        @else
-            <a href="#" class="link-page" id="{{ $i }}">{{ $i }}</a>
-        @endif
-    @endfor
-    @if($current_page != $pages)
-        <a href="#" class="link-page" id="{{ $current_page + 1 }}">
-            <img src={{ asset('image/right-way.svg') }} alt="left">
-        </a>
-    @else
-        <img src={{ asset('image/right-way.svg') }} alt="left">
-    @endif
+<footer>
+    {{$items->links()}}
 </footer>

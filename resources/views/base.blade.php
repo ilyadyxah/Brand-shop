@@ -77,7 +77,7 @@
         <section class="feedback-subscribe">
             <h6 class="feedback-subscribe-title">SUBSCRIBE
                 <br> <span class="feedback-subscribe-text">FOR OUR NEWLETTER &amp; PROMOTION</span></h6>
-            <form class="feedback-subscribe-form" action="№" method="get">
+            <form class="feedback-subscribe-form" action="#" method="get">
                 <input type="email" class="enter-email" placeholder="Enter Your Email">
                 <input type="button" class="btn-subscribe" value="Subscribe"></form>
         </section>
@@ -95,6 +95,8 @@
 <script type="text/javascript" src="{!! asset('js/OptionSelect.js') !!}"></script>
 <script type="text/javascript" src="{!! asset('js/OverlayMenu.js') !!}"></script>
 <script type="text/javascript" src="{!! asset('js/AnimationButtons.js') !!}"></script>
+<script type="text/javascript" src="{!! asset('js/save_scroll_coords.js') !!}"></script>
+<script type="text/javascript" src="{!! asset('js/CalcTotalPrice.js') !!}"></script>
 </body>
 
 </html>
